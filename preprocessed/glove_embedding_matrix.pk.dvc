@@ -1,0 +1,4 @@
+outs:
+- md5: 0ad039387cc713fd05ee7b4b17a2cd20
+  size: 20000162
+  path: glove_embedding_matrix.pk
