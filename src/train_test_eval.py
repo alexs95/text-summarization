@@ -59,7 +59,8 @@ def test(params):
 	print("Model restored")
 
 	for batch in b:
-		yield  beam_decode(model, batch, vocab, params)
+		print(batch)
+		yield beam_decode(model, batch, vocab, params)
 
 
 def test_and_save(params):

@@ -98,7 +98,11 @@ When mode is set to test, the code outputs some translation examples to director
 For English Models with Embedding:
 
 ```bash
-python src/main.py --mode=eval --data_dir=/path/to/tfrecords_finished_files/chunked_val --vocab_path=/path/to/tfrecords_finished_files/vocab --checkpoint_dir=/path/to/Checkpoints/embedding-name --pt_embedding=/path/to/embeddings/embedding-name_embedding_matrix.pk --embed_size=embedding-dimension --batch_size=4 --beam_size=4
+# Evaluation
+python src/main.py --mode=eval --data_dir=preprocessed/tfrecords_finished_files/chunked_val --vocab_path=preprocessed/tfrecords_finished_files/vocab --checkpoint_dir=preprocessed/glove --pt_embedding=preprocessed/glove_embedding_matrix.pk --embed_size=100 --batch_size=4 --beam_size=4
+
+# Testing
+python src/main.py --mode=test --data_dir=preprocessed/tfrecords_finished_files/chunked_val --vocab_path=preprocessed/tfrecords_finished_files/vocab --checkpoint_dir=preprocessed/glove --pt_embedding=preprocessed/glove_embedding_matrix.pk --embed_size=100 --batch_size=4 --beam_size=4 --test_save_dir=temp/decoded
 ```
 
 For Turkish Models with Embedding:

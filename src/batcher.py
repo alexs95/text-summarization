@@ -56,6 +56,7 @@ class Vocab:
   
   def size(self):
     return self.count
+
 class Data_Helper:
   def article_to_ids(article_words, vocab):
     ids = []
@@ -72,7 +73,6 @@ class Data_Helper:
         ids.append(i)
     return ids, oovs
 
-
   def abstract_to_ids(abstract_words, vocab, article_oovs):
     ids = []
     unk_id = vocab.word_to_id(vocab.UNKNOWN_TOKEN)
@@ -87,8 +87,6 @@ class Data_Helper:
       else:
         ids.append(i)
     return ids
-
-
 
   def output_to_words(id_list, vocab, article_oovs):
     words = []
@@ -105,8 +103,6 @@ class Data_Helper:
           raise ValueError('Error: model produced word ID %i which corresponds to article OOV %i but this example only has %i article OOVs' % (i, article_oov_idx, len(article_oovs)))
       words.append(w)
     return words
-
-
 
   def abstract_to_sents(abstract):
     """Splits abstract text from datafile into list of sentences.
@@ -166,7 +162,7 @@ def example_generator(filenames, vocab, max_enc_len, max_dec_len, mode, batch_si
     parsed_dataset = parsed_dataset.shuffle(1000, reshuffle_each_iteration=True).repeat()
 
   for raw_record in parsed_dataset:
-    
+
     article = raw_record["article"].numpy().decode()
     abstract = raw_record["abstract"].numpy().decode()
     
